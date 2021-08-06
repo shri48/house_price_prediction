@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <title>House Price Prediction</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="row">
+        <div class="card" style = "width:auto; height:auto;margin-top: 5%">
+          <div class ="card-header" style ="text-align: center;">
+            <h1> House Price Prediction</h1>
+          </div>
+
+          <div class="card-body" >
+            <form action ="http://127.0.0.1:5000/predict" method="POST" style="align-content:center">
+              <div class = "row">
+                <!-- select location -->
+                <div class="col-md-12 form-group" >
+                  <label>Select location:</label>
+                  <select class="selectpicker form-control" id="location" name="location">
+                    {% for location in locations %}
+                      <option value="{{location}}">{{location}}</option>
+
+                    {% endfor %}
+
+
+                  </select></p>
+                </div>
+                <!-- select area type -->
+                <div class="col-md-12 form-group">
+                  <label>Select Area Type:</label>
+                  <select class="selectpicker form-control" id="area_type" name="area_type">
+                    <option value="Super built-up  Area">Super built-up  Area</option>
+                    <option value="Plot  Area">Plot  Area</option>
+                    <option value="Built-up  Area">Built-up  Area</option>
+                    <option value="Carpet  Area">Carpet  Area</option>
+                  </select>
+                </div>
+                 <!-- select bhk -->
+                <div class="col-md-12 form-group">
+                  <label>Select BHK:</label>
+                  <select class="selectpicker form-control" id="bhk" name="bhk">
+                    {% for bhk in range(20) %}
+                      <option value="{{bhk}}">{{bhk}}</option>
+                    {% endfor %}
+                  </select>
+                </div>
+
+                <!-- select balcony -->
+                <div class="col-md-12 form-group">
+                  <label>Select Balcony:</label>
+                  <select class="selectpicker form-control" id="balcony" name="balcony">
+                    {% for bal in range(20) %}
+                      <option value="{{bal}}">{{bal}}</option>
+                    {% endfor %}
+                  </select>
+                </div>
+
+                <!-- select bathrooms -->
+                <div class="col-md-12 form-group">
+                  <label><b>Select bathrooms:</b></label>
+                  <select class="selectpicker form-control" id="bathroom" name="bathroom">
+                    {% for bath in range(20) %}
+                      <option value="{{bath}}">{{bath}}</option>
+                    {% endfor %}
+                  </select>
+                </div>
+
+                <!-- Enter Sqft -->
+                <div class="col-md-12 form-group">
+                  <label><b>Enter Sqft Area:</b></label>
+                  <input type="number" class="form-control" id="sqft" name="sqft" placeholder="Area in sqft">
+
+
+                  </select>
+                </div>
+
+                <!-- Button element -->
+                <div class = "col-md-12 form-group" style="margin-top: 1%;">
+                  <input type="submit" value="submit">
+                </div>
+
+
+              </div>
+
+            </form>
+            <!-- Area for predicting value -->
+            <br>
+            <div class="col-md-12" style="text-align: center">
+              <h3>{{ prediction_text }}</h3>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  
+    
+
+    <!-- Option 2: Separate Popper and Bootstrap JS -->
+    
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+    
+  </body>
+</html>
